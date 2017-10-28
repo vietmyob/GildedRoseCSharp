@@ -1,5 +1,4 @@
-﻿using ApprovalTests;
-using ApprovalTests.Reporters;
+﻿using ApprovalTests.Reporters;
 using NUnit.Framework;
 using System;
 using System.IO;
