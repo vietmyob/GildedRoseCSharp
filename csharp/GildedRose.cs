@@ -31,13 +31,13 @@ namespace csharp
         private void UpdateNormalItemQuality(Item item)
         {
             if (item.Quality <= 0) return;
-            item.Quality = item.Quality - 1;
+            item.Quality--;
         }
 
         private void UpdateSpecialItemQuality(Item item)
         {
             if (item.Quality >= 50) return;
-            item.Quality = item.Quality + 1;
+            item.Quality++;
             UpdateQualityForBackstagePass(item);
         }
 
@@ -50,7 +50,7 @@ namespace csharp
 
         private void UpdateSellInDate(Item item)
         {
-            item.SellIn = item.SellIn - 1;
+            item.SellIn--;
         }
 
         private void UpdateQualityAfterExpired(Item item)
@@ -66,7 +66,7 @@ namespace csharp
                     break;
                 default:
                     if (item.Quality > 0)
-                        item.Quality = item.Quality - 1;
+                        item.Quality--;
                     break;
             }
         }
