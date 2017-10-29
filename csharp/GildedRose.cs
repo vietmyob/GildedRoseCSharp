@@ -5,69 +5,24 @@ namespace csharp
     public class GildedRose
     {
         private readonly List<Item> _iTems;
-
+        private readonly ItemUpdater _itemUpdater;
         public GildedRose(List<Item> iTems)
         {
             _iTems = iTems;
+            _itemUpdater = new ItemUpdater();
         }
 
-        public void UpdateQuality()
+        public void UpdateInventory()
         {
             foreach (var item in _iTems)
             {
                 if (item.IsLegendary()) continue;
 
-                if (item.IsSpecial())
-                    UpdateSpecialItemQuality(item);
-                else
-                    UpdateNormalItemQuality(item);
+                _itemUpdater.UpdateQualityBeforeExpired(item);
 
-                UpdateSellInDate(item);
+                _itemUpdater.UpdateSellInDate(item);
 
-                UpdateQualityAfterExpired(item);
-            }
-        }
-
-        private void UpdateNormalItemQuality(Item item)
-        {
-            if (item.Quality <= 0) return;
-            item.Quality--;
-        }
-
-        private void UpdateSpecialItemQuality(Item item)
-        {
-            if (item.Quality >= 50) return;
-            item.Quality++;
-            UpdateQualityForBackstagePass(item);
-        }
-
-        private void UpdateQualityForBackstagePass(Item item)
-        {
-            if (item.Name != "Backstage passes to a TAFKAL80ETC concert") return;
-            item.Quality = item.SellIn < 11 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
-            item.Quality = item.SellIn < 6 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
-        }
-
-        private void UpdateSellInDate(Item item)
-        {
-            item.SellIn--;
-        }
-
-        private void UpdateQualityAfterExpired(Item item)
-        {
-            if (!item.HasExpired()) return;
-            switch (item.Name)
-            {
-                case "Aged Brie":
-                    item.Quality = item.Quality < 50 ? item.Quality + 1 : item.Quality;
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    item.Quality = 0;
-                    break;
-                default:
-                    if (item.Quality > 0)
-                        item.Quality--;
-                    break;
+                _itemUpdater.UpdateQualityAfterExpired(item);
             }
         }
     }
