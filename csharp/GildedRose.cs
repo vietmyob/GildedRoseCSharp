@@ -6,6 +6,7 @@ namespace csharp
     {
         private readonly List<Item> _iTems;
         private readonly ItemUpdater _itemUpdater;
+
         public GildedRose(List<Item> iTems)
         {
             _iTems = iTems;

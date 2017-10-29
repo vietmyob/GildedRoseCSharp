@@ -12,22 +12,26 @@
 
         private void DecreaseNormalItemQuality(Item item)
         {
-            if (item.Quality <= 0) return;
-            item.Quality--;
+            if (item.Quality > 0)
+                item.Quality--;
         }
 
         private void IncreaseSpecialItemQuality(Item item)
         {
-            if (item.Quality >= 50) return;
-            item.Quality++;
-            IncreaseQualityForBackstagePass(item);
+            if (item.Quality < 50)
+            {
+                item.Quality++;
+                IncreaseQualityForBackstagePass(item);
+            }
         }
 
         private void IncreaseQualityForBackstagePass(Item item)
         {
-            if (item.Name != "Backstage passes to a TAFKAL80ETC concert") return;
-            item.Quality = item.SellIn < 11 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
-            item.Quality = item.SellIn < 6 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
+            if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            {
+                item.Quality = item.SellIn < 11 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
+                item.Quality = item.SellIn < 6 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
+            }
         }
 
         public void UpdateSellInDate(Item item)
