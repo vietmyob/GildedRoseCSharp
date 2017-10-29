@@ -45,6 +45,15 @@ namespace csharp
         }
 
         [Test]
+        public void IncreaseQualityByTwoForExpiredAgedBrie()
+        {
+            var items = new List<Item> { new Item { Name = "Aged Brie", SellIn = 0, Quality = 20 } };
+            var app = new GildedRose(items);
+            app.UpdateQuality();
+            Assert.AreEqual(22, items.First().Quality);
+        }
+
+        [Test]
         public void IncreaseQualityByTwoForBackstagePass()
         {
             var items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 20 } };
@@ -72,7 +81,7 @@ namespace csharp
         }
 
         [Test]
-        public void KeepSulfurasQualityConstant()
+        public void KeepSulfurasQualityAndSellInDateConstant()
         {
             var items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 15, Quality = 80} };
             var app = new GildedRose(items);
