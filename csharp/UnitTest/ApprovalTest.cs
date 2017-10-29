@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace csharp
+namespace csharp.UnitTest
 {
     [TestFixture]
     [UseReporter(typeof(NUnitReporter))]

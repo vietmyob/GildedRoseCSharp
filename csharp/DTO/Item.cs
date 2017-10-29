@@ -1,4 +1,4 @@
-﻿namespace csharp
+﻿namespace csharp.DTO
 {
     public class Item
     {

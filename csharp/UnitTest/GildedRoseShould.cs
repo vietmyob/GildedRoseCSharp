@@ -1,8 +1,10 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using csharp.DTO;
+using csharp.Logic;
+using NUnit.Framework;
 
-namespace csharp
+namespace csharp.UnitTest
 {
     [TestFixture]
     public class GildedRoseShould

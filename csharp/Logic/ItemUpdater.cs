@@ -1,4 +1,6 @@
-﻿namespace csharp
+﻿using csharp.DTO;
+
+namespace csharp.Logic
 {
     public class ItemUpdater
     {

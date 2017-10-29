@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using csharp.DTO;
+using csharp.Logic;
 
 namespace csharp
 {

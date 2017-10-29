@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using csharp.DTO;
 
-namespace csharp
+namespace csharp.Logic
 {
     public class GildedRose
     {

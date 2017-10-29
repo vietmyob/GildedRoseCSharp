@@ -61,12 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprovalTest.cs" />
-    <Compile Include="GildedRose.cs" />
-    <Compile Include="GildedRoseShould.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemExtension.cs" />
-    <Compile Include="ItemUpdater.cs" />
+    <Compile Include="UnitTest\ApprovalTest.cs" />
+    <Compile Include="Logic\GildedRose.cs" />
+    <Compile Include="UnitTest\GildedRoseShould.cs" />
+    <Compile Include="DTO\Item.cs" />
+    <Compile Include="Logic\ItemExtension.cs" />
+    <Compile Include="Logic\ItemUpdater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
