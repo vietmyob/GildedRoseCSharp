@@ -12,27 +12,27 @@ namespace csharp.Logic
                 DecreaseNormalItemQuality(item);
         }
 
-        private void DecreaseNormalItemQuality(Item item)
-        {
-            if (item.Quality > 0)
-                item.Quality--;
-        }
-
         private void IncreaseSpecialItemQuality(Item item)
         {
-            if (item.Quality < 50)
+            if (item.IsBelowMaxQuality())
             {
                 item.Quality++;
                 IncreaseQualityForBackstagePass(item);
             }
         }
 
+        private void DecreaseNormalItemQuality(Item item)
+        {
+            if (item.HasPositiveQuality())
+                item.Quality--;
+        }
+
         private void IncreaseQualityForBackstagePass(Item item)
         {
-            if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+            if (item.Name == ItemName.BackstagePass)
             {
-                item.Quality = item.SellIn < 11 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
-                item.Quality = item.SellIn < 6 && item.Quality < 50 ? item.Quality + 1 : item.Quality;
+                item.Quality = item.HasToBeSoldIn(11) && item.IsBelowMaxQuality() ? item.Quality + 1 : item.Quality;
+                item.Quality = item.HasToBeSoldIn(6) && item.IsBelowMaxQuality() ? item.Quality + 1 : item.Quality;
             }
         }
 
@@ -46,10 +46,10 @@ namespace csharp.Logic
             if (!item.HasExpired()) return;
             switch (item.Name)
             {
-                case "Aged Brie":
+                case ItemName.AgedBrie:
                     IncreaseSpecialItemQuality(item);
                     break;
-                case "Backstage passes to a TAFKAL80ETC concert":
+                case ItemName.BackstagePass:
                     item.Quality = 0;
                     break;
                 default:

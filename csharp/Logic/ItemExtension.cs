@@ -12,10 +12,10 @@ namespace csharp.Logic
         {
             SpeciaItems = new List<string>
             {
-                "Aged Brie",
-                "Backstage passes to a TAFKAL80ETC concert"
+                ItemName.AgedBrie,
+                ItemName.BackstagePass
             };
-            LegendaryItem = "Sulfuras, Hand of Ragnaros";
+            LegendaryItem = ItemName.Sulfuras;
         }
 
         public static bool HasExpired(this Item item)
@@ -31,6 +31,21 @@ namespace csharp.Logic
         public static bool IsSpecial(this Item item)
         {
             return SpeciaItems.Contains(item.Name);
+        }
+
+        public static bool HasPositiveQuality(this Item item)
+        {
+            return item.Quality > 0;
+        }
+
+        public static bool IsBelowMaxQuality(this Item item)
+        {
+            return item.Quality < 50;
+        }
+
+        public static bool HasToBeSoldIn(this Item item, int days)
+        {
+            return item.SellIn < days;
         }
     }
 }

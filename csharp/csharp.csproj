@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\ItemName.cs" />
     <Compile Include="UnitTest\ApprovalTest.cs" />
     <Compile Include="Logic\GildedRose.cs" />
     <Compile Include="UnitTest\GildedRoseShould.cs" />
