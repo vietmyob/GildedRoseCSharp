@@ -3,11 +3,12 @@ using NUnit.Framework;
 using System;
 using System.IO;
 using System.Text;
+using ApprovalTests;
 
 namespace csharp.UnitTest
 {
     [TestFixture]
-    [UseReporter(typeof(NUnitReporter))]
+    [UseReporter(typeof(DiffReporter))]
     public class ApprovalTest
     {
         [Test]
@@ -19,9 +20,7 @@ namespace csharp.UnitTest
 
             Program.Main(new string[]{});
             var output = fakeoutput.ToString();
-            var currentProjPath = AppDomain.CurrentDomain.BaseDirectory;
-            var expected = File.ReadAllText(Path.Combine(currentProjPath, "ApprovalTest.ThirtyDays.received.txt"));
-            Assert.AreEqual(expected, output);
+            Approvals.Verify(output);
         }
     }
 }
