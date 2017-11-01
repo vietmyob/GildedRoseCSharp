@@ -66,7 +66,7 @@
     <Compile Include="Logic\GildedRose.cs" />
     <Compile Include="UnitTest\GildedRoseShould.cs" />
     <Compile Include="DTO\Item.cs" />
-    <Compile Include="Logic\ItemExtension.cs" />
+    <Compile Include="Logic\ItemChecker.cs" />
     <Compile Include="Logic\ItemUpdater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,18 +7,20 @@ namespace csharp.Logic
     {
         private readonly List<Item> _iTems;
         private readonly ItemUpdater _itemUpdater;
+        private readonly ItemChecker _itemChecker;
 
         public GildedRose(List<Item> iTems)
         {
             _iTems = iTems;
             _itemUpdater = new ItemUpdater();
+            _itemChecker = new ItemChecker();
         }
 
         public void UpdateInventory()
         {
             foreach (var item in _iTems)
             {
-                if (item.IsLegendary()) continue;
+                if (_itemChecker.IsLegendary(item)) continue;
 
                 _itemUpdater.UpdateQualityBeforeExpired(item);
 

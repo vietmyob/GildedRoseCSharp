@@ -4,9 +4,11 @@ namespace csharp.Logic
 {
     public class ItemUpdater
     {
+        private readonly ItemChecker _itemChecker = new ItemChecker();
+
         public void UpdateQualityBeforeExpired(Item item)
         {
-            if (item.IsSpecial())
+            if (_itemChecker.IsSpecial(item))
                 IncreaseSpecialItemQuality(item);
             else
                 DecreaseNormalItemQuality(item);
@@ -14,7 +16,7 @@ namespace csharp.Logic
 
         private void IncreaseSpecialItemQuality(Item item)
         {
-            if (item.IsBelowMaxQuality())
+            if (_itemChecker.IsBelowMaxQuality(item))
             {
                 item.Quality++;
                 IncreaseQualityForBackstagePass(item);
@@ -23,7 +25,7 @@ namespace csharp.Logic
 
         private void DecreaseNormalItemQuality(Item item)
         {
-            if (item.HasPositiveQuality())
+            if (_itemChecker.HasPositiveQuality(item))
                 item.Quality--;
         }
 
@@ -31,9 +33,15 @@ namespace csharp.Logic
         {
             if (item.Name == ItemName.BackstagePass)
             {
-                item.Quality = item.HasToBeSoldIn(11) && item.IsBelowMaxQuality() ? item.Quality + 1 : item.Quality;
-                item.Quality = item.HasToBeSoldIn(6) && item.IsBelowMaxQuality() ? item.Quality + 1 : item.Quality;
+                UpdateBackstagePassQualityBasedOnSellIn(item, 11);
+                UpdateBackstagePassQualityBasedOnSellIn(item, 6);
             }
+        }
+
+        private void UpdateBackstagePassQualityBasedOnSellIn(Item item, int days)
+        {
+            if (_itemChecker.IsBelowMaxQuality(item) && _itemChecker.HasToBeSoldIn(item, days))
+                item.Quality++;
         }
 
         public void UpdateSellInDate(Item item)
@@ -43,7 +51,7 @@ namespace csharp.Logic
 
         public void UpdateQualityAfterExpired(Item item)
         {
-            if (!item.HasExpired()) return;
+            if (!_itemChecker.HasExpired(item)) return;
             switch (item.Name)
             {
                 case ItemName.AgedBrie:
