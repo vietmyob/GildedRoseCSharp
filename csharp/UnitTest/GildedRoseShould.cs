@@ -100,5 +100,23 @@ namespace csharp.UnitTest
             app.UpdateInventory();
             Assert.AreEqual(50, items.First().Quality);
         }
+
+        [Test]
+        public void DecreaseQualityByTwoForConjuredBeforeExpired()
+        {
+            var items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 10, Quality = 30 } };
+            var app = new GildedRose(items);
+            app.UpdateInventory();
+            Assert.AreEqual(28, items.First().Quality);
+        }
+
+        [Test]
+        public void DecreaseQualityByFourForConjuredAfterExpired()
+        {
+            var items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 0, Quality = 30 } };
+            var app = new GildedRose(items);
+            app.UpdateInventory();
+            Assert.AreEqual(26, items.First().Quality);
+        }
     }
 }

@@ -23,18 +23,29 @@ namespace csharp.Logic
             }
         }
 
-        private void DecreaseNormalItemQuality(Item item)
-        {
-            if (_itemChecker.HasPositiveQuality(item))
-                item.Quality--;
-        }
-
         private void IncreaseQualityForBackstagePass(Item item)
         {
             if (item.Name == ItemName.BackstagePass)
             {
                 UpdateBackstagePassQualityBasedOnSellIn(item, 11);
                 UpdateBackstagePassQualityBasedOnSellIn(item, 6);
+            }
+        }
+
+        private void DecreaseNormalItemQuality(Item item)
+        {
+            if (_itemChecker.HasPositiveQuality(item))
+            {
+                item.Quality--;
+                DecreaseQualityForConjured(item);
+            }
+        }
+
+        private void DecreaseQualityForConjured(Item item)
+        {
+            if (item.Name == ItemName.Conjured)
+            {
+                item.Quality--;
             }
         }
 
