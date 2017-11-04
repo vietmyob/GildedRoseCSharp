@@ -64,6 +64,8 @@
     <Compile Include="DTO\ItemName.cs" />
     <Compile Include="DTO\ItemUpdaterMap.cs" />
     <Compile Include="DTO\InventoryConfig.cs" />
+    <Compile Include="Interface\IUpdater.cs" />
+    <Compile Include="Logic\Updater\NormalItemUpdater.cs" />
     <Compile Include="UnitTest\ApprovalTest.cs" />
     <Compile Include="Logic\GildedRose.cs" />
     <Compile Include="UnitTest\GildedRoseShould.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\InventoryConfigSerialiser.cs" />
     <Compile Include="UnitTest\InventoryConfigSerialiserShould.cs" />
+    <Compile Include="UnitTest\NormalItemUpdaterShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -86,6 +89,7 @@
     <Content Include="ApprovalTest.ThirtyDays.received.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\InventoryConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

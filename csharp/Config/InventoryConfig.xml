@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<InventoryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ItemUpdaterMaps>
+    <ItemUpdaterMap>
+      <ItemName>Normal Item</ItemName>
+      <UpdaterClass>NormalItemUpdater</UpdaterClass>
+    </ItemUpdaterMap>
+    <ItemUpdaterMap>
+      <ItemName>Aged Brie</ItemName>
+      <UpdaterClass>AgedBrieUpdater</UpdaterClass>
+    </ItemUpdaterMap>
+    <ItemUpdaterMap>
+      <ItemName>Sulfuras, Hand of Ragnaros</ItemName>
+      <UpdaterClass>SulfurasUpdater</UpdaterClass>
+    </ItemUpdaterMap>
+    <ItemUpdaterMap>
+      <ItemName>Backstage passes to a TAFKAL80ETC concert</ItemName>
+      <UpdaterClass>BackstagePassUpdater</UpdaterClass>
+    </ItemUpdaterMap>
+    <ItemUpdaterMap>
+      <ItemName>Conjured</ItemName>
+      <UpdaterClass>ConjuredUpdater</UpdaterClass>
+    </ItemUpdaterMap>
+  </ItemUpdaterMaps>
+</InventoryConfig>
