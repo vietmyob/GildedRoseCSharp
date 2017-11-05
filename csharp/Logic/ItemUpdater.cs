@@ -23,7 +23,7 @@ namespace csharp.Logic
             }
         }
 
-        private void IncreaseQualityForBackstagePass(Item item)
+        public void IncreaseQualityForBackstagePass(Item item)
         {
             if (item.Name == ItemName.BackstagePass)
             {

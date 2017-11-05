@@ -3,11 +3,10 @@ using csharp.Interface;
 
 namespace csharp.Logic.Updater
 {
-    public class NormalItemUpdater : IUpdater
+    public class ConjuredUpdater : IUpdater
     {
         private readonly ItemChecker _itemChecker = new ItemChecker();
         private readonly ItemUpdater _itemUpdater = new ItemUpdater();
-
         public void Update(Item item)
         {
             _itemUpdater.UpdateSellInDate(item);
@@ -17,9 +16,13 @@ namespace csharp.Logic.Updater
         private void UpdateQuality(Item item)
         {
             if (_itemChecker.HasExpired(item))
-                item.Quality = item.Quality >= 2 ? item.Quality - 2 : item.Quality - 1;
+            {
+                item.Quality = item.Quality >= 4 ? item.Quality - 4 : item.Quality - 3;
+            }
             else
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
-        }   
+            {
+                item.Quality = item.Quality >= 2 ? item.Quality - 2 : item.Quality - 1;
+            }
+        }
     }
 }
