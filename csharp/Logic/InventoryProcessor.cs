@@ -8,26 +8,22 @@ namespace csharp.Logic
 {
     public class InventoryProcessor
     {
-        private readonly InventoryConfigSerialiser _configSerialiser;
-        private readonly Reflector _reflector;
+        private readonly InventoryConfigSerialiser _configSerialiser = new InventoryConfigSerialiser();
+        private readonly Reflector _reflector = new Reflector();
+        private readonly InventoryConfig _inventoryConfig;
 
         public InventoryProcessor()
         {
-            _configSerialiser = new InventoryConfigSerialiser();
-            _reflector = new Reflector();
+            _inventoryConfig = _configSerialiser.Load("Config/InventoryConfig.xml");
         }
 
         public void Update(List<Item> items )
         {
-            var inventoryConfig = _configSerialiser.Load("Config/InventoryConfig.xml");
             foreach (var item in items)
             {
-                var updaterClass = inventoryConfig.ItemUpdaterMaps.Where(x => item.Name == x.ItemName);
-                if (!updaterClass.Any())
-                {
-                    updaterClass = inventoryConfig.ItemUpdaterMaps.Where(x => x.ItemName == "Normal Item");
-                }
-                var updaterClassType = _reflector.GetIUpdaterClassType(updaterClass.First().UpdaterClass);
+                var itemUpdaterMap = _inventoryConfig.ItemUpdaterMaps.FirstOrDefault(x => item.Name == x.ItemName);
+                var updaterClassName = itemUpdaterMap?.UpdaterClass ?? _inventoryConfig.DefaultUpdaterClass;
+                var updaterClassType = _reflector.GetIUpdaterClassType(updaterClassName);
                 var updater = (IUpdater)Activator.CreateInstance(updaterClassType);
                 updater.Update(item);
             }
