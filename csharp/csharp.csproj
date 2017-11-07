@@ -71,22 +71,16 @@
     <Compile Include="Logic\Updater\ConjuredUpdater.cs" />
     <Compile Include="Logic\Reflector.cs" />
     <Compile Include="UnitTest\ReflectorShould.cs" />
-    <Compile Include="UnitTest\UpdaterShould\ConjuredUpdaterShould.cs" />
-    <Compile Include="UnitTest\UpdaterShould\AgedBrieUpdaterShould.cs" />
     <Compile Include="UnitTest\ApprovalTest.cs" />
     <Compile Include="Logic\GildedRose.cs" />
     <Compile Include="Logic\Updater\BackstagePassUpdater.cs" />
-    <Compile Include="UnitTest\UpdaterShould\BackstagePassUpdaterShould.cs" />
     <Compile Include="UnitTest\GildedRoseShould.cs" />
     <Compile Include="DTO\Item.cs" />
     <Compile Include="Logic\ItemChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\InventoryConfigSerialiser.cs" />
-    <Compile Include="UnitTest\InventoryConfigSerialiserShould.cs" />
-    <Compile Include="UnitTest\UpdaterShould\NormalItemUpdaterShould.cs" />
     <Compile Include="Logic\Updater\SulfurasUpdater.cs" />
-    <Compile Include="UnitTest\UpdaterShould\SulfurasUpdaterShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -102,6 +96,7 @@
     <Content Include="Config\InventoryConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="UnitTest\ApprovalTest.ThirtyDays.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
