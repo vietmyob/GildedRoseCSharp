@@ -3,7 +3,7 @@ using csharp.Interface;
 
 namespace csharp.Logic.Updater
 {
-    public class ConjuredUpdater : UpdaterAbstract, IUpdater
+    public class ConjuredUpdater : AbstractUpdater, IUpdater
     {
         private readonly ItemChecker _itemChecker = new ItemChecker();
         public void Update(Item item)

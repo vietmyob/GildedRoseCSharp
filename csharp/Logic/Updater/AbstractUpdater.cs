@@ -2,11 +2,11 @@
 
 namespace csharp.Logic.Updater
 {
-    public abstract class UpdaterAbstract
+    public abstract class AbstractUpdater
     {
         private readonly ItemChecker _itemChecker;
 
-        protected UpdaterAbstract()
+        protected AbstractUpdater()
         {
             _itemChecker = new ItemChecker();
         }
