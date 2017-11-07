@@ -18,7 +18,7 @@
       <UpdaterClass>BackstagePassUpdater</UpdaterClass>
     </ItemUpdaterMap>
     <ItemUpdaterMap>
-      <ItemName>Conjured</ItemName>
+      <ItemName>Conjured Mana Cake</ItemName>
       <UpdaterClass>ConjuredUpdater</UpdaterClass>
     </ItemUpdaterMap>
   </ItemUpdaterMaps>

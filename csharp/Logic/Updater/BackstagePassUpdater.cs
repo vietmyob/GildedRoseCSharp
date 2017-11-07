@@ -10,19 +10,17 @@ namespace csharp.Logic.Updater
 
         public void Update(Item item)
         {
-            _itemUpdater.UpdateSellInDate(item);            
             UpdateQuality(item);
+            _itemUpdater.UpdateSellInDate(item);
+            if (_itemChecker.HasExpired(item))
+                item.Quality = 0;
         }
 
         private void UpdateQuality(Item item)
         {
-            if(_itemChecker.HasExpired(item))
+            if (_itemChecker.IsBelowMaxQuality(item))
             {
-                item.Quality = 0;
-            }
-            else
-            {
-                item.Quality = _itemChecker.IsBelowMaxQuality(item) ? item.Quality + 1 : item.Quality;
+                item.Quality++;
                 _itemUpdater.IncreaseQualityForBackstagePass(item);
             }
         }

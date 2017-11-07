@@ -17,11 +17,15 @@ namespace csharp.Logic.Updater
         {
             if (_itemChecker.HasExpired(item))
             {
-                item.Quality = item.Quality >= 4 ? item.Quality - 4 : item.Quality - 3;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
             }
             else
             {
-                item.Quality = item.Quality >= 2 ? item.Quality - 2 : item.Quality - 1;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
             }
         }
     }

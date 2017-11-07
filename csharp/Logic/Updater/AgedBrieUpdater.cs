@@ -16,7 +16,10 @@ namespace csharp.Logic.Updater
         private void UpdateQuality(Item item)
         {
             if (_itemChecker.HasExpired(item))
-                item.Quality = item.Quality <= 48 ? item.Quality + 2 : item.Quality + 1;
+            {
+                item.Quality = _itemChecker.IsBelowMaxQuality(item) ? item.Quality + 1 : item.Quality;
+                item.Quality = _itemChecker.IsBelowMaxQuality(item) ? item.Quality + 1 : item.Quality;
+            }
             else
             {
                 item.Quality = _itemChecker.IsBelowMaxQuality(item) ? item.Quality + 1 : item.Quality;

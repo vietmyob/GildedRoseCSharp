@@ -68,6 +68,8 @@
     <Compile Include="Logic\Updater\AgedBrieUpdater.cs" />
     <Compile Include="Logic\Updater\NormalItemUpdater.cs" />
     <Compile Include="Logic\Updater\ConjuredUpdater.cs" />
+    <Compile Include="Logic\Reflector.cs" />
+    <Compile Include="UnitTest\ReflectorShould.cs" />
     <Compile Include="UnitTest\UpdaterShould\ConjuredUpdaterShould.cs" />
     <Compile Include="UnitTest\UpdaterShould\AgedBrieUpdaterShould.cs" />
     <Compile Include="UnitTest\ApprovalTest.cs" />
@@ -97,7 +99,9 @@
     <Content Include="ApprovalTest.ThirtyDays.received.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Config\InventoryConfig.xml" />
+    <Content Include="Config\InventoryConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
