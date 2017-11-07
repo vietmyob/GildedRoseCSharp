@@ -3,15 +3,14 @@ using csharp.Interface;
 
 namespace csharp.Logic.Updater
 {
-    public class BackstagePassUpdater : IUpdater
+    public class BackstagePassUpdater : UpdaterAbstract, IUpdater
     {
         private readonly ItemChecker _itemChecker = new ItemChecker();
-        private readonly ItemUpdater _itemUpdater = new ItemUpdater();
 
         public void Update(Item item)
         {
             UpdateQuality(item);
-            _itemUpdater.UpdateSellInDate(item);
+            UpdateSellInDate(item);
             DropQualityAfterExpired(item);
         }
 
@@ -23,14 +22,12 @@ namespace csharp.Logic.Updater
 
         private void UpdateQuality(Item item)
         {
-            if (!_itemChecker.IsBelowMaxQuality(item)) return;
-            item.Quality++;
+            IncreaseQualityByOne(item);
             IncreaseQualityForBackstagePass(item);
         }
 
         private void IncreaseQualityForBackstagePass(Item item)
         {
-            if (item.Name != ItemName.BackstagePass) return;
             UpdateBackstagePassQualityBasedOnSellIn(item, 11);
             UpdateBackstagePassQualityBasedOnSellIn(item, 6);
         }

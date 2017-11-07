@@ -1,6 +1,6 @@
 ﻿using csharp.DTO;
 
-namespace csharp.Logic
+namespace csharp.Logic.Updater
 {
     public abstract class UpdaterAbstract
     {
@@ -19,6 +19,11 @@ namespace csharp.Logic
         protected void DecreaseQualityByOne(Item item)
         {
             item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+        }
+
+        protected void UpdateSellInDate(Item item)
+        {
+            item.SellIn--;
         }
     }
 }

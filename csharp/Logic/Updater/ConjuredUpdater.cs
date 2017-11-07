@@ -6,10 +6,9 @@ namespace csharp.Logic.Updater
     public class ConjuredUpdater : UpdaterAbstract, IUpdater
     {
         private readonly ItemChecker _itemChecker = new ItemChecker();
-        private readonly ItemUpdater _itemUpdater = new ItemUpdater();
         public void Update(Item item)
         {
-            _itemUpdater.UpdateSellInDate(item);
+            UpdateSellInDate(item);
             UpdateQuality(item);
         }
 
