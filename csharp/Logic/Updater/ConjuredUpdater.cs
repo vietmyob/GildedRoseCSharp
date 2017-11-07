@@ -3,7 +3,7 @@ using csharp.Interface;
 
 namespace csharp.Logic.Updater
 {
-    public class ConjuredUpdater : IUpdater
+    public class ConjuredUpdater : UpdaterAbstract, IUpdater
     {
         private readonly ItemChecker _itemChecker = new ItemChecker();
         private readonly ItemUpdater _itemUpdater = new ItemUpdater();
@@ -17,15 +17,15 @@ namespace csharp.Logic.Updater
         {
             if (_itemChecker.HasExpired(item))
             {
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                DecreaseQualityByOne(item);
+                DecreaseQualityByOne(item);
+                DecreaseQualityByOne(item);
+                DecreaseQualityByOne(item);
             }
             else
             {
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
-                item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
+                DecreaseQualityByOne(item);
+                DecreaseQualityByOne(item);
             }
         }
     }

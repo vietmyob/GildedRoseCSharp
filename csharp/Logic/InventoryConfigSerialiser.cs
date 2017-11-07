@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
 using csharp.DTO;
@@ -29,12 +28,10 @@ namespace csharp.Logic
 
         private static string GetFilePath(string xmlFilePath)
         {
-            if (!File.Exists(xmlFilePath))
-            {
-                var applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                xmlFilePath = Path.Combine(applicationPath ?? throw new InvalidOperationException(), xmlFilePath);
-            }
+            if (File.Exists(xmlFilePath)) return xmlFilePath;
 
+            var applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            xmlFilePath = Path.Combine(applicationPath, xmlFilePath);
             return xmlFilePath;
         }
     }
