@@ -21,7 +21,7 @@ namespace csharp.Logic.Updater
             item.Quality = _itemChecker.HasPositiveQuality(item) ? item.Quality - 1 : item.Quality;
         }
 
-        protected void UpdateSellInDate(Item item)
+        protected void UpdateSellIn(Item item)
         {
             item.SellIn--;
         }

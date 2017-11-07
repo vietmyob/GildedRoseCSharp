@@ -1,5 +1,4 @@
-﻿using csharp.Interface;
-using csharp.Logic;
+﻿using csharp.Logic;
 using csharp.Logic.Updater;
 using NUnit.Framework;
 

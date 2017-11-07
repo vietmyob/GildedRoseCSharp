@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Xml.Serialization;
 using csharp.DTO;
 using csharp.Logic;
 using NUnit.Framework;

@@ -8,7 +8,7 @@ namespace csharp.Logic
 {
     public class Reflector
     {
-        private readonly IEnumerable<Type> _IUpdaterClass;
+        private static IEnumerable<Type> _IUpdaterClass;
 
         public Reflector()
         {
@@ -16,9 +16,10 @@ namespace csharp.Logic
                 where typeof(IUpdater).IsAssignableFrom(type)
                 select type;
         }
+
         public Type GetIUpdaterClassType(string className)
         {
-            return _IUpdaterClass.FirstOrDefault(x => string.Compare(x.Name, className, StringComparison.InvariantCulture) == 0);
+            return _IUpdaterClass.FirstOrDefault(x => x.Name == className);
         }
     }
 }

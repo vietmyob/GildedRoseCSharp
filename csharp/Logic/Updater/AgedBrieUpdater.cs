@@ -9,7 +9,7 @@ namespace csharp.Logic.Updater
 
         public void Update(Item item)
         {
-            UpdateSellInDate(item);
+            UpdateSellIn(item);
             UpdateQuality(item);
         }
 

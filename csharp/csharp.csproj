@@ -64,6 +64,7 @@
     <Compile Include="DTO\ItemUpdaterMap.cs" />
     <Compile Include="DTO\InventoryConfig.cs" />
     <Compile Include="Interface\IUpdater.cs" />
+    <Compile Include="Logic\InventoryProcessor.cs" />
     <Compile Include="Logic\Updater\UpdaterAbstract.cs" />
     <Compile Include="Logic\Updater\AgedBrieUpdater.cs" />
     <Compile Include="Logic\Updater\NormalItemUpdater.cs" />

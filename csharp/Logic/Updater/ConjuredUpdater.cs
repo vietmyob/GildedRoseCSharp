@@ -8,7 +8,7 @@ namespace csharp.Logic.Updater
         private readonly ItemChecker _itemChecker = new ItemChecker();
         public void Update(Item item)
         {
-            UpdateSellInDate(item);
+            UpdateSellIn(item);
             UpdateQuality(item);
         }
 

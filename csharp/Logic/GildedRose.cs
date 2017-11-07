@@ -1,38 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using csharp.DTO;
-using csharp.Interface;
 
 namespace csharp.Logic
 {
     public class GildedRose
     {
-        private readonly List<Item> _iTems;
-        private readonly InventoryConfigSerialiser _configSerialiser;
-        private readonly Reflector _reflector;
+        private readonly List<Item> _items;
+        private readonly InventoryProcessor _inventoryProcessor;
 
-        public GildedRose(List<Item> iTems)
+        public GildedRose(List<Item> items)
         {
-            _iTems = iTems;
-            _configSerialiser = new InventoryConfigSerialiser();
-            _reflector = new Reflector();
+            _items = items;
+            _inventoryProcessor = new InventoryProcessor();
         }
 
         public void UpdateInventory()
         {
-            var inventoryConfig = _configSerialiser.Load("Config/InventoryConfig.xml");
-            foreach (var item in _iTems)
-            {
-                var updaterClass = inventoryConfig.ItemUpdaterMaps.Where(x => item.Name == x.ItemName);
-                if (!updaterClass.Any())
-                {
-                    updaterClass = inventoryConfig.ItemUpdaterMaps.Where(x => x.ItemName == "Normal Item");
-                }
-                var updaterClassType = _reflector.GetIUpdaterClassType(updaterClass.First().UpdaterClass);
-                var updater = (IUpdater)Activator.CreateInstance(updaterClassType);
-                updater.Update(item);
-            }
+            _inventoryProcessor.Update(_items);
         }
     }
 }
